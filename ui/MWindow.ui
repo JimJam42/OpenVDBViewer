@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MWindow</class>
+ <widget class="QMainWindow" name="MWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1267</width>
+    <height>917</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpenVDB Viewer - OpenGL</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="MainWindow">
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout_20">
+      <item row="5" column="0">
+       <widget class="QLabel" name="FileName">
+        <property name="text">
+         <string>Use File-&gt;Open to open a VDB file</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="8">
+       <widget class="QDoubleSpinBox" name="sbx_lineWidth">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="5">
+       <widget class="QDoubleSpinBox" name="sbx_pointSize">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLabel" name="lbl_pointSize">
+        <property name="text">
+         <string>Point Size</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="7">
+       <widget class="QLabel" name="lbl_lineWidth">
+        <property name="text">
+         <string>Line Width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="6">
+       <widget class="Line" name="line_21">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="Line" name="line_20">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QCheckBox" name="cbx_showGrid">
+        <property name="text">
+         <string>Show Grid</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <layout class="QGridLayout" name="glWindow">
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QTabWidget" name="tabs_tabControl">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedKingdom"/>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="usesScrollButtons">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Render</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>359</width>
+             <height>760</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QGroupBox" name="gbox_Render">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="title">
+               <string>Render Mode</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="cbx_showMesh">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Show High Resolution</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" colspan="2">
+                <widget class="QWidget" name="widget_3" native="true">
+                 <layout class="QGridLayout" name="gridLayout_26">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lbl_renderChannel">
+                    <property name="text">
+                     <string>Render Channel</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="2">
+                   <widget class="QCheckBox" name="cbx_showBBox">
+                    <property name="text">
+                     <string>Show Bounding Box</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QComboBox" name="cmbo_renderChannel">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_vdbTree">
+              <property name="title">
+               <string>VDB Tree</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QCheckBox" name="cbx_showVDBTree">
+                   <property name="text">
+                    <string>Show VDB Tree</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="lbl_TreeLevels">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Tree Levels</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="cbx_treeLevel3">
+                   <property name="text">
+                    <string>Level 3</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="cbx_treeLevel2">
+                   <property name="text">
+                    <string>Level 2</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="cbx_treeLevel1">
+                   <property name="text">
+                    <string>Level 1</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="cbx_treeLevel0">
+                   <property name="text">
+                    <string>Level 0</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_LOD">
+              <property name="title">
+               <string>Level of Detail</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="1" column="0" colspan="2">
+                <widget class="QSlider" name="hsld_LOD">
+                 <property name="cursor">
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>1000</number>
+                 </property>
+                 <property name="value">
+                  <number>500</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="tickPosition">
+                  <enum>QSlider::TicksBothSides</enum>
+                 </property>
+                 <property name="tickInterval">
+                  <number>20</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QDoubleSpinBox" name="sbx_LODValue">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_showFileInformation">
+              <property name="text">
+               <string>Show File Information</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Channels</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_2">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>359</width>
+             <height>800</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QGroupBox" name="gbx_colourMap">
+              <property name="title">
+               <string>Colour Ramp</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_13">
+               <item row="1" column="0">
+                <widget class="QGroupBox" name="gbx_applyColourRampTo">
+                 <property name="title">
+                  <string>Apply Colour Ramp to</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_25">
+                  <item row="0" column="1">
+                   <widget class="QRadioButton" name="rdio_applyToFile">
+                    <property name="text">
+                     <string>File</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QRadioButton" name="rdio_applyToCulledPoints">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>Culled Points</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QComboBox" name="cmbo_applyCullToChannelSelect">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lbl_applyCullToChannelSelect">
+                    <property name="text">
+                     <string>Apply to:</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="cbx_applyColourMap">
+                 <property name="text">
+                  <string>Apply Colour Ramp</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QGroupBox" name="groupBox">
+                 <property name="title">
+                  <string>Colour Ramp Range</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_15">
+                  <item row="0" column="0">
+                   <widget class="QRadioButton" name="rdio_automaticColourMap">
+                    <property name="text">
+                     <string>Automatic</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QRadioButton" name="rdio_userDefColourMap">
+                    <property name="text">
+                     <string>User Defined</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QDoubleSpinBox" name="dsbx_colourRampBottom">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="decimals">
+                     <number>4</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-10000.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10000.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.010000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QDoubleSpinBox" name="dsbx_colourRampTop">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="decimals">
+                     <number>4</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-10000.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10000.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.010000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="lbl_colourRampBotoom">
+                    <property name="text">
+                     <string>Bottom</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lbl_colourRampTop">
+                    <property name="text">
+                     <string>Top</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QGroupBox" name="groupBox_2">
+                 <property name="title">
+                  <string>Ramp Colour</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_16">
+                  <item row="1" column="0">
+                   <widget class="QSpinBox" name="sbx_colourRampRed">
+                    <property name="maximum">
+                     <number>255</number>
+                    </property>
+                    <property name="value">
+                     <number>255</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QSpinBox" name="sbx_colourRampGreen">
+                    <property name="maximum">
+                     <number>255</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QSpinBox" name="sbx_colourRampBlue">
+                    <property name="maximum">
+                     <number>255</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lbl_colourRampRed">
+                    <property name="text">
+                     <string>Red</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="lbl_colourRampGreen">
+                    <property name="text">
+                     <string>Green</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="lbl_colourRampBlue">
+                    <property name="text">
+                     <string>Blue</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item>
+                   <widget class="QRadioButton" name="rdio_pointRamp">
+                    <property name="text">
+                     <string>Points</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rdio_channelRamp">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="text">
+                     <string>Channel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_Vectors">
+              <property name="title">
+               <string>Vectors</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="QCheckBox" name="cbx_showVectors">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Show Channel as Vector</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="cmbo_channelSelect">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbl_VectorLength">
+                 <property name="text">
+                  <string>Vector Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="hsld_vectorLength">
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>1</number>
+                 </property>
+                 <property name="pageStep">
+                  <number>10</number>
+                 </property>
+                 <property name="sliderPosition">
+                  <number>10</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_VectorOptions">
+              <property name="title">
+               <string>Vector Options</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="1" column="0" colspan="3">
+                <widget class="QComboBox" name="cmbo_vectorColourType">
+                 <item>
+                  <property name="text">
+                   <string>Solid Colour</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Direction</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="lbl_Red">
+                 <property name="text">
+                  <string>Red</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QSpinBox" name="sbx_blue">
+                 <property name="maximum">
+                  <number>255</number>
+                 </property>
+                 <property name="value">
+                  <number>204</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLabel" name="lbl_Blue">
+                 <property name="text">
+                  <string>Blue</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QSpinBox" name="sbx_red">
+                 <property name="minimum">
+                  <number>102</number>
+                 </property>
+                 <property name="maximum">
+                  <number>255</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QSpinBox" name="sbx_green">
+                 <property name="maximum">
+                  <number>255</number>
+                 </property>
+                 <property name="value">
+                  <number>153</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLabel" name="lbl_Green">
+                 <property name="text">
+                  <string>Green</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" colspan="3">
+                <widget class="QLabel" name="lbl_vectorColourType">
+                 <property name="text">
+                  <string>Vector Colour Type</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0" colspan="3">
+                <widget class="QCheckBox" name="cbx_invertVectorColours">
+                 <property name="text">
+                  <string>Invert Colours</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="title">
+        <string>Culling</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_3">
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_3">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>359</width>
+             <height>839</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <item>
+             <widget class="QGroupBox" name="gbx_culling">
+              <property name="title">
+               <string>Culling</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_14">
+               <item row="3" column="1">
+                <widget class="Line" name="line_18">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="Line" name="line_17">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QWidget" name="widget_5" native="true">
+                 <layout class="QGridLayout" name="gridLayout_18">
+                  <item row="5" column="0" colspan="3">
+                   <widget class="QCheckBox" name="cbx_useCulling2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>Use Culling</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QComboBox" name="cmbo_currentPointChannelCulling_2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="lbl_cull2Type">
+                    <property name="font">
+                     <font>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lbl_cull2TypeChannel">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Type:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QComboBox" name="cmbo_cullingChoice2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Less than &lt;</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Between</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Greater than &gt;</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull2From">
+                    <layout class="QGridLayout" name="gridLayout_21">
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2FromX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2FromY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2FromZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull2To">
+                    <layout class="QGridLayout" name="gridLayout_22">
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2ToX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2ToY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull2ToZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QWidget" name="widget_4" native="true">
+                 <layout class="QGridLayout" name="gridLayout_17">
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="lbl_cull1Type">
+                    <property name="font">
+                     <font>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lbl_cull1TypeChannel">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Type:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QComboBox" name="cmbo_currentPointChannelCulling_1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QComboBox" name="cmbo_cullingChoice1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Less than &lt;</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Between</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Greater than &gt;</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="5" column="0" colspan="3">
+                   <widget class="QCheckBox" name="cbx_useCulling1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>Use Culling</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull1From">
+                    <layout class="QGridLayout" name="gridLayout_2">
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1FromX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1FromZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.014000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1FromY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull1To">
+                    <layout class="QGridLayout" name="gridLayout_4">
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1ToZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1ToY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull1ToX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QWidget" name="widget_6" native="true">
+                 <layout class="QGridLayout" name="gridLayout_19">
+                  <item row="1" column="0">
+                   <widget class="QComboBox" name="cmbo_currentPointChannelCulling_3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="lbl_cull3Type">
+                    <property name="font">
+                     <font>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lbl_cull3TypeChannel">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Type:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QComboBox" name="cmbo_cullingChoice3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Less than &lt;</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Between</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Greater than &gt;</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="5" column="0" colspan="3">
+                   <widget class="QCheckBox" name="cbx_useCulling3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>Use Culling</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull3From">
+                    <layout class="QGridLayout" name="gridLayout_23">
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3FromX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3FromY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3FromZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="3">
+                   <widget class="QGroupBox" name="gbx_cull3To">
+                    <layout class="QGridLayout" name="gridLayout_24">
+                     <item row="0" column="0">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3ToX">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3ToY">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QDoubleSpinBox" name="dsbx_cull3ToZ">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.010000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Crop</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_4">
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_4">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>359</width>
+             <height>760</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_13">
+            <item>
+             <widget class="QGroupBox" name="gbox_Crop">
+              <property name="title">
+               <string>Crop Model</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <layout class="QGridLayout" name="gridLayout_9">
+                 <item row="0" column="0" rowspan="2">
+                  <widget class="QCheckBox" name="cbx_useCrop">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="text">
+                    <string>Use Crop</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lbl_numCrops">
+                   <property name="text">
+                    <string>Number of crop boxes</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QComboBox" name="cmbo_numCrops">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="currentText">
+                    <string>1</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>2</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>3</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="Line" name="line_11">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QGridLayout" name="gridLayout_8">
+                 <item row="4" column="2">
+                  <widget class="QLabel" name="lbl_depth">
+                   <property name="text">
+                    <string>Depth</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLabel" name="lbl_height">
+                   <property name="text">
+                    <string>Height</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropWidth">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>2.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropX">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimum">
+                    <double>-99.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropY">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimum">
+                    <double>-99.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>99.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>15.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="2">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropZ">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimum">
+                    <double>-99.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" colspan="2">
+                  <widget class="QLabel" name="lbl_cropNumber">
+                   <property name="text">
+                    <string>Crop Box</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropHeight">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>30.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QComboBox" name="cmbo_sliceSelection">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="2">
+                  <widget class="QDoubleSpinBox" name="dsbx_cropDepth">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>10.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lbl_xPos">
+                   <property name="text">
+                    <string>X</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="lbl_yPos">
+                   <property name="text">
+                    <string>Y</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="lbl_width">
+                   <property name="text">
+                    <string>Width</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="lbl_zPos">
+                   <property name="text">
+                    <string>Z</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_ScanModel">
+              <property name="title">
+               <string>Scan Model</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <item>
+                <layout class="QGridLayout" name="gridLayout_6">
+                 <item row="0" column="0" colspan="2">
+                  <widget class="QComboBox" name="cmbo_scanType">
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>X Axis</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Y Axis</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Z Axis</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" colspan="2">
+                  <widget class="QPushButton" name="btn_startSingleScan">
+                   <property name="text">
+                    <string>Start</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="Line" name="line_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_PauseScan">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Pause</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="hsld_cropSlide">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="minimum">
+                  <number>-1000</number>
+                 </property>
+                 <property name="maximum">
+                  <number>1000</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_stopScan">
+                 <property name="text">
+                  <string>Stop</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbox_ScanOptions">
+              <property name="title">
+               <string>Scan Options</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <item row="2" column="2">
+                <widget class="QLabel" name="lbl_yScanHeight">
+                 <property name="text">
+                  <string>Y Scan Height</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" rowspan="2">
+                <widget class="Line" name="line_13">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="lbl_scanSpeed">
+                 <property name="text">
+                  <string>Scan Speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" colspan="5">
+                <widget class="QSlider" name="hsld_scanSpeed">
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>40</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="QLabel" name="lbl_zScanDepth">
+                 <property name="text">
+                  <string>Z Scan Depth</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QDoubleSpinBox" name="dsbx_yScanHeight">
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>2.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="lbl_xScanWidth">
+                 <property name="text">
+                  <string>X Scan Width</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="QDoubleSpinBox" name="dsbx_zScanDepth">
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>2.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QDoubleSpinBox" name="dsbx_xScanWidth">
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>2.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3" rowspan="2">
+                <widget class="Line" name="line_14">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1267</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionClear"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Volume</string>
+    </property>
+    <widget class="QMenu" name="menuRemove">
+     <property name="title">
+      <string>Remove</string>
+     </property>
+     <addaction name="actionRemove_High_Resolution_Data"/>
+    </widget>
+    <addaction name="menuRemove"/>
+    <addaction name="separator"/>
+    <addaction name="actionReset_Transform"/>
+    <addaction name="actionReset_Scene"/>
+   </widget>
+   <widget class="QMenu" name="menuCamera">
+    <property name="title">
+     <string>Camera</string>
+    </property>
+    <addaction name="actionReset_Camera"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Information</string>
+    </property>
+    <addaction name="actionInformation"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_OpenVDBViewer"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuCamera"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
+  </action>
+  <action name="actionGo_Fullscreen">
+   <property name="text">
+    <string>Go Fullscreen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionReset_Camera">
+   <property name="text">
+    <string>Reset Camera</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+R</string>
+   </property>
+  </action>
+  <action name="actionRemove_Mesh">
+   <property name="text">
+    <string>Remove Mesh</string>
+   </property>
+  </action>
+  <action name="actionRemove_Both">
+   <property name="text">
+    <string>Remove Both</string>
+   </property>
+  </action>
+  <action name="actionRemove_High_Resolution_Data">
+   <property name="text">
+    <string>Remove High Resolution Data</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionRemove_Mesh_2">
+   <property name="text">
+    <string>Remove Mesh</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Del</string>
+   </property>
+  </action>
+  <action name="actionRemove_all">
+   <property name="text">
+    <string>Remove all</string>
+   </property>
+  </action>
+  <action name="actionReset_Transform">
+   <property name="text">
+    <string>Reset Transform</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionReset_Scene">
+   <property name="text">
+    <string>Reset Scene</string>
+   </property>
+   <property name="shortcut">
+    <string>R</string>
+   </property>
+  </action>
+  <action name="actionInformation">
+   <property name="text">
+    <string>Information</string>
+   </property>
+  </action>
+  <action name="actionAbout_OpenVDBViewer">
+   <property name="text">
+    <string>About OpenVDBViewer</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

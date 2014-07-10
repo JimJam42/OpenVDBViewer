@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/res">
+        <file alias="icon_16">ovdbv.iconset/icon_16x16.png</file>
+        <file alias="icon_16_x2">ovdbv.iconset/icon_16x16@2x.png</file>
+        <file alias="icon_32">ovdbv.iconset/icon_32x32.png</file>
+        <file alias="icon_32_x2">ovdbv.iconset/icon_32x32@2x.png</file>
+        <file alias="icon_128">ovdbv.iconset/icon_128x128.png</file>
+        <file alias="icon_128_x2">ovdbv.iconset/icon_128x128@2x.png</file>
+        <file alias="icon_256">ovdbv.iconset/icon_256x256.png</file>
+        <file alias="icon_256_x2">ovdbv.iconset/icon_256x256@2x.png</file>
+        <file alias="icon_512">ovdbv.iconset/icon_512x512.png</file>
+        <file alias="icon_512_x2">ovdbv.iconset/icon_512x512@2x.png</file>
+    </qresource>
+</RCC>
